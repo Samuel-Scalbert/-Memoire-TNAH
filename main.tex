@@ -1,0 +1,252 @@
+% document vide aux normes de l'école pour le mémoire
+
+% PREAMBULE
+
+%package obligatoire : type de document
+\documentclass[a4paper,12pt,twoside]{book}
+
+% encodage (pour XeLaTeX)
+\usepackage{fontspec}
+
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{tabularx}
+\usepackage{csquotes}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
+
+\newcommand{\clearemptydoublepage}{\newpage{\pagestyle{empty}\cleardoublepage}}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{pythonStyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\lstdefinestyle{YMLStyle}{
+    backgroundcolor=\color{white},
+    commentstyle=\color{codegray},
+    keywordstyle=\color{blue},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{red},
+    basicstyle=\ttfamily\small,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2
+}
+
+\lstdefinestyle{jsonStyle}{
+  basicstyle=\ttfamily,
+  columns=fullflexible,
+  showstringspaces=false,
+  commentstyle=\color{gray},
+  keywordstyle=\color{blue},
+  stringstyle=\color{red},
+  frame=single,
+  breaklines=true,
+  breakatwhitespace=true,
+  captionpos=b,
+  numbers=left,
+  numberstyle=\tiny\color{gray}
+}
+
+\lstdefinestyle{XMLStyle}{
+  language=XML,
+  basicstyle=\ttfamily,
+  keywordstyle=\color{blue},
+  stringstyle=\color{red},
+  commentstyle=\color{green},
+  morestring=[b]",
+  morestring=[s]{>}{<},
+  morecomment=[s]{<?}{?>},
+  morecomment=[s][\color{red}]{<!--}{-->}
+}
+
+
+%si index, package pour index + makeindex avant hyperref
+
+
+% le package hyperref avec des options, si en local
+%\usepackage[pdfusetitle, pdfsubject ={Mémoire TNAH}, pdfkeywords={les mots-clés}]{hyperref}
+
+%avec overleaf, utiliser :
+\usepackage[xetex]{hyperref}
+\hypersetup{
+pdfauthor = {Samuel Scalbert},
+pdftitle = {Les CMS et le low-code au service des humanités numériques : l'exemple de DiScholEd, une application TEI Publisher},
+pdfsubject = {sujet},
+pdfkeywords = {TEI Publisher} {DiScholEd} {XML} {Python} {JavaScript} {Exide} {CMS} {Inria} {low-code}}
+
+%il faut mettre au moins une langue
+\usepackage[english,french]{babel}
+
+% configurer le document selon les normes de l'école
+\usepackage[margin=2.5cm]{geometry} %marges
+\usepackage{setspace} % espacement qui permet ensuite de définir un interligne
+\onehalfspacing % interligne de 1.5
+\setlength\parindent{1cm} % indentation des paragraphes à 1 cm
+
+\usepackage{lettrine} % lettrines (pas obligatoire)
+
+
+% bibliographie
+\usepackage[backend=biber, sorting=nyt, style=enc,maxbibnames=10]{biblatex}
+\addbibresource{main/reference.bib}
+\nocite{*}
+
+\usepackage{glossaries}
+\makeglossaries
+
+
+% + toutes la liste des packages nécessaires à votre document (si images, tableaux, schémas, etc.)
+
+% on pourra aussi utiliser la commande mise dans l'exemple de correction du TP1 pour enlever les titres courant qui traînent sur les pages
+
+\author{Prénom Nom - M2 TNAH}
+\title{Titre du mémoire}
+
+% DOCUMENT
+\begin{document}
+	\begin{titlepage}
+		\begin{center}
+			
+			\bigskip
+			
+			\begin{large}				
+				ÉCOLE NATIONALE DES CHARTES\\
+				UNIVERSITÉ PARIS, SCIENCES \& LETTRES
+			\end{large}
+			\begin{center}\rule{2cm}{0.02cm}\end{center}
+			
+			\bigskip
+			\bigskip
+			\bigskip
+			\begin{Large}
+				\textbf{Samuel Scalbert}\\
+			\end{Large}
+		%selon le cas
+			\begin{normalsize} \textit{licencié ès lettres}\\
+				\textit{diplômé de master}
+			\end{normalsize}
+			
+			\bigskip
+			\bigskip
+			\bigskip
+			
+			\begin{Huge}
+				\textbf{Les CMS et le low-code au service des humanités numériques : l'exemple de DiScholEd, une application TEI Publisher}\\
+			\end{Huge}
+			\bigskip
+			
+			\bigskip
+			\bigskip
+			\begin{large}
+			\end{large}
+			\vfill
+			
+			\begin{large}
+				Mémoire 
+				pour le diplôme de master \\
+				\og{} Technologies numériques appliquées à l'histoire \fg{} \\
+				\bigskip
+				2023
+			\end{large}
+			
+		\end{center}
+	\end{titlepage}
+	
+	\thispagestyle{empty}	
+	\clearemptydoublepage
+	
+	\frontmatter
+	\chapter{Résumé}
+	\medskip
+   Le projet DiScholEd est dédié à la gestion de sept corpus datant du XIX\up{e} et du XX\up{e} siècle, lesquels sont rendus accessibles via une plateforme web. Ces corpus sont principalement constitués de documents personnels, souvent qualifiés d'ego-documents. En septembre 2023, notre application compte une collection de 714 documents. Dans le cadre de cette mise en ligne, notre choix s'est orienté vers l'utilisation d'un CMS (Système de Gestion de Contenu), à savoir TEI Publisher. Les CMS ont acquis une importance indéniable dans le domaine du développement web. Le but de ce mémoire est d'analyser dans quelle mesure TEI Publisher s'adapte efficacement au projet DiScholEd.\\
+	
+	\textbf{Mots-clés~:}TEI Publisher~; Publisher~; XML TEI~; Python~; JavaScript~; low-code~; CMS~; Inria
+	
+	\textbf{Informations bibliographiques~:} Samuel Scalbert, \textit{Les CMS et le low-code au service des humanités numériques : l'exemple de DiScholEd, une application TEI Publisher}, mémoire de master \og{}Technologies numériques appliquées à l'histoire\fg{}, dir. [Floriane Chiffoleau et Jean-Damien Généro], École nationale des chartes, 2023.
+	
+	\clearemptydoublepage
+	
+	\chapter{Remerciements}
+	
+	\lettrine{J}e tiens tout d'abord à exprimer ma gratitude envers toutes les personnes qui m'ont soutenu au cours de ma deuxième année de Master.
+
+Je souhaite particulièrement remercier mes tuteurs, Jean-Damien Généro et Floriane Chiffoleau, qui m'ont accompagné avec bienveillance et qui ont constamment partagé d'excellents conseils. J'adresse également mes remerciements à tous les membres de l'équipe ALMAnaCH d'Inria pour leurs précieux conseils. Je souhaite exprimer ma gratitude envers Sarah, qui a été une camarade exceptionnelle pendant la durée de notre stage.
+
+    \input{main/abbrev}
+	\clearemptydoublepage
+ 
+	\input{main/introduction}
+	\clearemptydoublepage
+    % bibliographie ici
+    \printbibliography[heading=bibintoc,keyword=main,title={Bibliographie générale}]
+    \printbibliography[heading=bibintoc,keyword=site,title={Sites Internet}]
+	\clearemptydoublepage
+ 
+	\mainmatter
+	
+	% là, le corps du mémoire, généralement TROIS parties
+	
+	% possibilité d'avoir un document main.tex peu rempli, et chaque partie appelée par \input{} par exemple
+    
+    \clearemptydoublepage
+    \input{main/part1}
+    \clearemptydoublepage
+    \input{main/part2}
+    \clearemptydoublepage
+    \input{main/part3}
+    \clearemptydoublepage
+    \input{main/conclusion}
+	\clearemptydoublepage
+ 
+	%les annexes
+    \backmatter
+	\include{appendix/appendix}
+    
+    
+%index à mettre ici si index	
+%\printindex
+
+% glossaire si glossaire
+\printglossaries
+
+% List of figures
+\listoffigures
+\addcontentsline{toc}{chapter}{Table des figures}
+
+% Table of contents
+\tableofcontents
+\addcontentsline{toc}{chapter}{Table des matières}
+	
+\end{document}
